@@ -48,6 +48,17 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""20706ba9-187b-4ca5-a66f-d5a9613dcef6"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""Keyboard"",
                     ""id"": ""aef6a9c1-c105-4000-981b-431bf5a001b9"",
                     ""path"": ""1DAxis"",
