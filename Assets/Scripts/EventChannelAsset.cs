@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Event channel/Void", fileName = "EventChannelAsset", order = 0)]
+[CreateAssetMenu(menuName = "Event channel/Void", fileName = "EventChannelAsset", order = -1)]
 public class EventChannelAsset : ScriptableObject
 {
     public event Action OnEvent;

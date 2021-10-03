@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Animator animator;
 
+    [Header("Channels")]
+    [SerializeField] private FloatChannelAsset playerSpeedChannel;
+
+    [SerializeField] private FloatChannelAsset jumpStrengthChannel;
+    
     private Rigidbody2D _rb;
 
     private PlayerControls _playerControls;
@@ -15,9 +20,14 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
     private float _movementInput;
     private bool _isGrounded;
 
+    private float _speed = 10;
+    [SerializeField] private float _speedMultiplier = 20;
+
     private static int _isWalkingHash = Animator.StringToHash("IsWalking");
     private static int _isGroundedHash = Animator.StringToHash("IsGrounded");
     private static int _jumpHash = Animator.StringToHash("Jump");
+    private float _jumpStrength;
+    [SerializeField] private float _jumpStrengthMultiplier = 5;
 
     void Awake()
     {
@@ -29,12 +39,16 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
         _playerControls = new PlayerControls();
         _playerControls.Enable();
         _playerControls.Movement.SetCallbacks(this);
+        playerSpeedChannel.OnData += UpdateSpeed;
+        jumpStrengthChannel.OnData += UpdateJumpStrength;
     }
 
     private void OnDisable()
     {
         _playerControls?.Dispose();
         _playerControls = null;
+        playerSpeedChannel.OnData -= UpdateSpeed;
+        jumpStrengthChannel.OnData -= UpdateJumpStrength;
     }
 
     // Update is called once per frame
@@ -43,6 +57,16 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
         CheckGrounded();
         HandleMovement();
         HandleJump();
+    }
+
+    private void UpdateSpeed(float speed)
+    {
+        _speed = (speed - 0.5f) * _speedMultiplier;
+    }
+
+    private void UpdateJumpStrength(float strength)
+    {
+        _jumpStrength = strength * _jumpStrengthMultiplier;
     }
 
     private void CheckGrounded()
@@ -61,7 +85,8 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
             return;
 
         sprite.flipX = _movementInput < 0;
-        _rb.velocity = Vector2.right * _movementInput;
+        var verticalVelocity = _rb.velocity * Vector2.up;
+        _rb.velocity = _movementInput * _speed * Vector2.right + verticalVelocity;
     }
 
     private void HandleJump()
@@ -76,7 +101,7 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
         
         animator.SetTrigger(_jumpHash);
         var currentVelocity = _rb.velocity;
-        _rb.velocity = new Vector2(currentVelocity.x, 20f);
+        _rb.velocity = new Vector2(currentVelocity.x, _jumpStrength);
     }
     
     public void OnWalk(InputAction.CallbackContext context)
