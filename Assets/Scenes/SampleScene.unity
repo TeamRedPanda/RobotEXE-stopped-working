@@ -497,6 +497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 537014387}
   - component: {fileID: 537014388}
+  - component: {fileID: 537014389}
   m_Layer: 5
   m_Name: Speed Slider
   m_TagString: Untagged
@@ -580,6 +581,34 @@ MonoBehaviour:
       - m_Target: {fileID: 11400000, guid: 3732ec73bcbd44f47a92021f207b4724, type: 2}
         m_TargetAssemblyTypeName: DataChannelAssetBase`1[[System.Single, mscorlib
         m_MethodName: Emit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &537014389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537014386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678e710fb6704052a43c47b405ebcc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Channel: {fileID: 11400000, guid: 3732ec73bcbd44f47a92021f207b4724, type: 2}
+  OnData:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 537014388}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+        m_MethodName: SetValueWithoutNotify
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1655,7 +1684,7 @@ MonoBehaviour:
   animator: {fileID: 1745765026}
   playerSpeedChannel: {fileID: 11400000, guid: 3732ec73bcbd44f47a92021f207b4724, type: 2}
   jumpStrengthChannel: {fileID: 11400000, guid: f3c64d8aeded59c45b9451e77cd31fa3, type: 2}
-  _speedMultiplier: 20
+  _speedMultiplier: 10
   _jumpStrengthMultiplier: 10
 --- !u!1 &893139370
 GameObject:
@@ -2172,6 +2201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1993353664}
   - component: {fileID: 1993353665}
+  - component: {fileID: 1993353666}
   m_Layer: 5
   m_Name: Jump Strength Slider
   m_TagString: Untagged
@@ -2255,6 +2285,34 @@ MonoBehaviour:
       - m_Target: {fileID: 11400000, guid: f3c64d8aeded59c45b9451e77cd31fa3, type: 2}
         m_TargetAssemblyTypeName: DataChannelAssetBase`1[[System.Single, mscorlib
         m_MethodName: Emit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1993353666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993353663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 678e710fb6704052a43c47b405ebcc7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Channel: {fileID: 11400000, guid: f3c64d8aeded59c45b9451e77cd31fa3, type: 2}
+  OnData:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1993353665}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Slider, UnityEngine.UI
+        m_MethodName: SetValueWithoutNotify
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

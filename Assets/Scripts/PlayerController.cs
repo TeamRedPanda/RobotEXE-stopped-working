@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
     private float _movementInput;
     private bool _isGrounded;
 
-    private float _speed = 10;
+    private float _speed = -10;
     [SerializeField] private float _speedMultiplier = 20;
 
     private static int _isWalkingHash = Animator.StringToHash("IsWalking");
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        playerSpeedChannel.Emit((_speed / _speedMultiplier + 1f) * 0.5f);
     }
 
     void OnEnable()
