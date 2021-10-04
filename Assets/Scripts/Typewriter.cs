@@ -66,12 +66,15 @@ public class Typewriter : MonoBehaviour, PlayerControls.IUIActions
     {
         _isSentenceComplete = false;
         _textBox.SetText(displayText);
-
-        for (int i = 0; i <= (displayText.Length); i++)
+        _textBox.ForceMeshUpdate();
+        var characterCount = _textBox.textInfo.characterCount;
+        
+        for (var i = 0; i <= characterCount - 1; i++)
         {
             _textBox.maxVisibleCharacters = i;
             yield return new WaitForSeconds(textWaitTime);
         }
+        _textBox.maxVisibleCharacters = characterCount;
 
         _isSentenceComplete = true;
     }
