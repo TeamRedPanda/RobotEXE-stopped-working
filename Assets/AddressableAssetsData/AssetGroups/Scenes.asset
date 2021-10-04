@@ -10,20 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: Scenes
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
+  m_GroupName: Scenes
   m_Data:
     m_SerializedData: []
-  m_GUID: 8c212efaa7fcd024c9b37ad907f2629e
+  m_GUID: 77e56a033658e3b419a8ccca5258939d
   m_SerializeEntries:
-  - m_GUID: 2cda990e2423bbf4892e6590ba056729
-    m_Address: Assets/Scenes/SampleScene.unity
+  - m_GUID: 28355a2df47518f419c0da0e3cca5887
+    m_Address: Assets/Scenes/UI.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b150d203cfbc0e34186b504a7767ffea
+    m_Address: Assets/Scenes/Controllers.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 66a84a1e42e34524f8b005cce40cb4ee, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: e3d1cb317ab8f8843b858ca1a2bc4f36, type: 2}
-    - {fileID: 11400000, guid: 09d69318cfe83544094e70a0426eb32a, type: 2}
+    - {fileID: 11400000, guid: 525b770e7100e664fa6d7f5fe67f2f74, type: 2}
+    - {fileID: 11400000, guid: 6fd7a8fc87dba654bb2e82afd4fcb59d, type: 2}
