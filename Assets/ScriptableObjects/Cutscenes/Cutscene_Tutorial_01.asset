@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cues:
   - _audioCue: {fileID: 0}
-    _textCue: Hello
+    _textCue: Hello <sprite index=1>
   - _audioCue: {fileID: 0}
     _textCue: World.
   - _audioCue: {fileID: 0}
-    _textCue: You can walk around by pressing WASD!
+    _textCue: You can walk around by pressing <br><sprite name="keyboard_a"> <sprite
+      name="keyboard_d"> or <sprite name="analog_horizontal">
   onCompletedEvent: {fileID: 11400000, guid: 60e80d89d2e6482498d17fd9a9aeeeee, type: 2}

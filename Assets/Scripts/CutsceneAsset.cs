@@ -15,7 +15,7 @@ public class CutsceneAsset : ScriptableObject
 public class Cue
 {
     [SerializeField] private AudioClip _audioCue;
-    [SerializeField] private string _textCue;
+    [SerializeField, TextArea(1, 5)] private string _textCue;
 
     public AudioClip AudioCue => _audioCue;
     public string TextCue => _textCue;
