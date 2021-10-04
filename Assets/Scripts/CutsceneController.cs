@@ -21,6 +21,7 @@ public class CutsceneController : MonoBehaviour
             if (currentCue >= _currentCutscene.Cues.Count)
             {
                 _currentCutscene.onCompletedEvent.Emit();
+                _currentCutscene.HasSeen = true;
                 return;
             }
 
