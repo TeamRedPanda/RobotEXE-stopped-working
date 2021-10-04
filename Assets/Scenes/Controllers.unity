@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 477122866}
   - component: {fileID: 477122868}
   - component: {fileID: 477122869}
+  - component: {fileID: 477122870}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -229,6 +230,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levels:
   - m_AssetGUID: 2cda990e2423bbf4892e6590ba056729
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: c8df89aa693db2b47982d6a7c8f8a3be
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 383c97fca4e11d5438e4bfb138482ad4
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -287,6 +296,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Channel: {fileID: 11400000, guid: e9e4eef6c3331d647b8da1143331dc36, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 477122866}
+        m_TargetAssemblyTypeName: LevelController, Assembly-CSharp
+        m_MethodName: LoadNextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &477122870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477122865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d1ca0ed23b49448a1cbe5537631540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Channel: {fileID: 11400000, guid: 9c9ca49d7fa1bb54dbff47e6e78b6fcd, type: 2}
   OnEvent:
     m_PersistentCalls:
       m_Calls:

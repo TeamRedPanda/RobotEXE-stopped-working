@@ -19,6 +19,12 @@ public class LevelController : MonoBehaviour
             Debug.Log($"Unloading currently loaded scene.");
             await _currentLevel.UnLoadScene().Task;
         }
+        else
+        {
+            // Scene was loaded through inspector, aka, we launched directly into a level
+            var activeScene = SceneManager.GetActiveScene();
+            SceneManager.UnloadSceneAsync(activeScene.name);
+        }
         
         _currentLevel = levels[_currentLevelIndex++];
         var sceneInstance = await _currentLevel.LoadSceneAsync(LoadSceneMode.Additive).Task;

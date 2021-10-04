@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d554a429794ee792e3c82d9818423a, type: 3}
+  m_Name: Cutscene_End_Game
+  m_EditorClassIdentifier: 
+  _cues:
+  - _audioCue: {fileID: 0}
+    _textCue: Thanks for playing!!
+  - _audioCue: {fileID: 0}
+    _textCue: Never use Unity's Addressables for Webgl!
+  - _audioCue: {fileID: 0}
+    _textCue: Debugging took 8 hours :(
+  onCompletedEvent: {fileID: 11400000, guid: 72f5079eab0dcf4469ad65ea23f516a6, type: 2}
