@@ -1513,6 +1513,24 @@ MonoBehaviour:
   playerState: {fileID: 11400000, guid: 75079c2321eb78248ac09a56a80d04c0, type: 2}
   _speedMultiplier: 10
   _jumpStrengthMultiplier: 10
+  _onPlayerDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 6936c112778ebd8488ac6c4e7ad7445a, type: 2}
+        m_TargetAssemblyTypeName: EventChannelAsset, Assembly-CSharp
+        m_MethodName: Emit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onPlayerWin:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &890280913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2712,6 +2730,10 @@ PrefabInstance:
     - target: {fileID: 8688286510819027934, guid: bfe6aec2084a4954f9611917c4d9a40f, type: 3}
       propertyPath: m_Name
       value: EditorInitializer
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688286510819027934, guid: bfe6aec2084a4954f9611917c4d9a40f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfe6aec2084a4954f9611917c4d9a40f, type: 3}

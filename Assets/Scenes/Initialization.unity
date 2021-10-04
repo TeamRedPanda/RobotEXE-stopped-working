@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &365132757
+--- !u!1 &1972771916
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,36 +131,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 365132759}
-  - component: {fileID: 365132758}
-  - component: {fileID: 365132760}
+  - component: {fileID: 1972771917}
+  - component: {fileID: 1972771918}
   m_Layer: 0
-  m_Name: CutsceneController
+  m_Name: Bootstrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &365132758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365132757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d7a64630a639fd4697715d619d97322, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _textCueChannel: {fileID: 11400000, guid: 79d4b03b9c391fb44a37f5eca40f5fcd, type: 2}
---- !u!4 &365132759
+--- !u!4 &1972771917
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365132757}
+  m_GameObject: {fileID: 1972771916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -168,103 +154,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &365132760
+--- !u!114 &1972771918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 365132757}
+  m_GameObject: {fileID: 1972771916}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 036d2c81aadc495c9abecb2e86ca576c, type: 3}
+  m_Script: {fileID: 11500000, guid: 965ca3da75e6260459e0ea331ff00fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Channel: {fileID: 11400000, guid: e20264e35ae8c074fa20fc5a03805c71, type: 2}
-  OnData:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 365132758}
-        m_TargetAssemblyTypeName: CutsceneController, Assembly-CSharp
-        m_MethodName: StartCutscene
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!1 &477122865
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 477122867}
-  - component: {fileID: 477122866}
-  - component: {fileID: 477122868}
-  - component: {fileID: 477122869}
-  m_Layer: 0
-  m_Name: LevelController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &477122866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477122865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 966f7e23e25c0cf4694374f61d18467d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  levels:
-  - m_AssetGUID: 2cda990e2423bbf4892e6590ba056729
+  _uiScene:
+    m_AssetGUID: 28355a2df47518f419c0da0e3cca5887
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
---- !u!4 &477122867
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477122865}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &477122868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477122865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1ca0ed23b49448a1cbe5537631540, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Channel: {fileID: 11400000, guid: 6936c112778ebd8488ac6c4e7ad7445a, type: 2}
-  OnEvent:
+  _controllersScene:
+    m_AssetGUID: b150d203cfbc0e34186b504a7767ffea
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  onInitialLoadCompleted:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 477122866}
-        m_TargetAssemblyTypeName: LevelController, Assembly-CSharp
-        m_MethodName: RestartLevel
+      - m_Target: {fileID: 11400000, guid: e9e4eef6c3331d647b8da1143331dc36, type: 2}
+        m_TargetAssemblyTypeName: EventChannelAsset, Assembly-CSharp
+        m_MethodName: Emit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -274,31 +191,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &477122869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477122865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53d1ca0ed23b49448a1cbe5537631540, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Channel: {fileID: 11400000, guid: e9e4eef6c3331d647b8da1143331dc36, type: 2}
-  OnEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 477122866}
-        m_TargetAssemblyTypeName: LevelController, Assembly-CSharp
-        m_MethodName: LoadNextLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  onBlahChannel:
+    m_AssetGUID: e9e4eef6c3331d647b8da1143331dc36
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

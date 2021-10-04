@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -9,6 +10,8 @@ public class CutsceneAsset : ScriptableObject
     public List<Cue> Cues => _cues;
 
     public EventChannelAsset onCompletedEvent;
+
+    [NonSerialized] public bool HasSeen;
 }
 
 [System.Serializable]

@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
@@ -29,8 +30,14 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
     private static int _isWalkingHash = Animator.StringToHash("IsWalking");
     private static int _isGroundedHash = Animator.StringToHash("IsGrounded");
     private static int _jumpHash = Animator.StringToHash("Jump");
+    private static int _dieHash = Animator.StringToHash("Die");
+    private static int _cheerHash = Animator.StringToHash("Cheer");
+    
     private float _jumpStrength;
     [SerializeField] private float _jumpStrengthMultiplier = 5;
+
+    [SerializeField] private UnityEvent _onPlayerDeath;
+    [SerializeField] private UnityEvent _onPlayerWin;
 
     void Awake()
     {
@@ -72,10 +79,13 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
     {
         if (other.gameObject.CompareTag("Damage"))
         {
-            Debug.Log("Ded");
+            animator.SetTrigger(_dieHash);
+            _onPlayerDeath?.Invoke();
         } else if (other.gameObject.CompareTag("Goal"))
         {
-            Debug.Log("Win");
+            animator.SetTrigger(_cheerHash);
+            _playerControls.Movement.Disable();
+            _onPlayerWin?.Invoke();
         }
     }
 

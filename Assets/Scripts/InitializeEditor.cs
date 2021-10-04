@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
@@ -15,7 +13,10 @@ public class InitializeEditor : MonoBehaviour
     {
         foreach (var assetReference in _assetReferences)
         {
-            assetReference.LoadSceneAsync(LoadSceneMode.Additive);
+            var editorAsset = assetReference.editorAsset;
+            if (SceneManager.GetSceneByName(editorAsset.name).isLoaded)
+                continue;
+            assetReference.LoadSceneAsync(LoadSceneMode.Additive).WaitForCompletion();
         }
     }
 #endif

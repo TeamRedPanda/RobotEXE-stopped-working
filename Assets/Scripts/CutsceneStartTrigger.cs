@@ -9,6 +9,12 @@ public class CutsceneStartTrigger : MonoBehaviour
     [SerializeField] private CutsceneChannelAsset _cutsceneChannel;
     [SerializeField] private bool _fireOnce;
 
+    private void Awake()
+    {
+        if (_fireOnce && _cutscene.HasSeen)
+            Destroy(gameObject);
+    }
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         _cutsceneChannel.Emit(_cutscene);
