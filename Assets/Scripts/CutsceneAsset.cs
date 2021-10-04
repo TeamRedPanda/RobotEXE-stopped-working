@@ -8,6 +8,7 @@ public class CutsceneAsset : ScriptableObject
     [SerializeField] private List<Cue> _cues;
     public List<Cue> Cues => _cues;
 
+    public EventChannelAsset onCompletedEvent;
 }
 
 [System.Serializable]

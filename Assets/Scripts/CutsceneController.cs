@@ -19,8 +19,11 @@ public class CutsceneController : MonoBehaviour
         _textCueChannel.OnCueCompleted += () =>
         {
             if (currentCue >= _currentCutscene.Cues.Count)
+            {
+                _currentCutscene.onCompletedEvent.Emit();
                 return;
-            
+            }
+
             _textCueChannel.EmitNextCue(_currentCutscene.Cues[currentCue++].TextCue);
         };
     }

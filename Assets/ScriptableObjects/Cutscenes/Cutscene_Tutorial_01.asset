@@ -19,3 +19,4 @@ MonoBehaviour:
     _textCue: World.
   - _audioCue: {fileID: 0}
     _textCue: You can walk around by pressing WASD!
+  onCompletedEvent: {fileID: 11400000, guid: 60e80d89d2e6482498d17fd9a9aeeeee, type: 2}

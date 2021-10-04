@@ -2,6 +2,7 @@ using System;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
 {
@@ -12,7 +13,9 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
     [SerializeField] private FloatChannelAsset playerSpeedChannel;
 
     [SerializeField] private FloatChannelAsset jumpStrengthChannel;
-    
+
+    [SerializeField] private PlayerState playerState;
+        
     private Rigidbody2D _rb;
 
     private PlayerControls _playerControls;
@@ -38,7 +41,12 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
     void OnEnable()
     {
         _playerControls = new PlayerControls();
-        _playerControls.Enable();
+        
+        if (playerState.CanMove)
+            EnableWalk();
+        if (playerState.CanJump)
+            EnableJump();
+        
         _playerControls.Movement.SetCallbacks(this);
         playerSpeedChannel.OnData += UpdateSpeed;
         jumpStrengthChannel.OnData += UpdateJumpStrength;
@@ -66,6 +74,16 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
         {
             Debug.Log("Ded");
         }
+    }
+
+    public void EnableWalk()
+    {
+        _playerControls.Movement.Walk.Enable();
+    }
+
+    public void EnableJump()
+    {
+        _playerControls.Movement.Jump.Enable();
     }
 
     private void UpdateSpeed(float speed)

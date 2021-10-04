@@ -1596,6 +1596,8 @@ GameObject:
   - component: {fileID: 890280910}
   - component: {fileID: 890280909}
   - component: {fileID: 890280912}
+  - component: {fileID: 890280913}
+  - component: {fileID: 890280914}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1681,8 +1683,89 @@ MonoBehaviour:
   animator: {fileID: 1745765026}
   playerSpeedChannel: {fileID: 11400000, guid: 3732ec73bcbd44f47a92021f207b4724, type: 2}
   jumpStrengthChannel: {fileID: 11400000, guid: f3c64d8aeded59c45b9451e77cd31fa3, type: 2}
+  playerState: {fileID: 11400000, guid: 75079c2321eb78248ac09a56a80d04c0, type: 2}
   _speedMultiplier: 10
   _jumpStrengthMultiplier: 10
+--- !u!114 &890280913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890280908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d1ca0ed23b49448a1cbe5537631540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Channel: {fileID: 11400000, guid: 60e80d89d2e6482498d17fd9a9aeeeee, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 75079c2321eb78248ac09a56a80d04c0, type: 2}
+        m_TargetAssemblyTypeName: PlayerState, Assembly-CSharp
+        m_MethodName: set_CanMove
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 890280912}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: EnableWalk
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &890280914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890280908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d1ca0ed23b49448a1cbe5537631540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Channel: {fileID: 11400000, guid: c669fb2c64715964193e373bb34df4ca, type: 2}
+  OnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 75079c2321eb78248ac09a56a80d04c0, type: 2}
+        m_TargetAssemblyTypeName: PlayerState, Assembly-CSharp
+        m_MethodName: set_CanJump
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 890280912}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: EnableJump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &893139370
 GameObject:
   m_ObjectHideFlags: 0
