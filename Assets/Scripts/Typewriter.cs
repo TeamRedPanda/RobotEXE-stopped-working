@@ -1,59 +1,84 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
-public class Typewriter : MonoBehaviour
+[RequireComponent(typeof(TextMeshProUGUI))]
+public class Typewriter : MonoBehaviour, PlayerControls.IUIActions
 {
-    void Update()
-    {
-        if ( Input.GetMouseButtonDown( 0 ) ) {
-            SkipToNextText();
-        }
-    }
+    private PlayerControls _playerControls;
+    
+    [SerializeField, Range(0, 1)] private float textWaitTime = 0.03f;
+    private TextMeshProUGUI _textBox;
 
-    [Range(0, 1)]
-    public float textWaitTime = 0.03f;
-    public Text textBox;
+    [SerializeField] private TextCueChannelAsset textCueChannel;
 
-    //Store all your text in this string array
-    string[] goatText = new string[]{"1. Laik's super awesome custom typewriter script", "2. You can click to skip to the next text", "3.All text is stored in a single string array", "4. Ok, now we can continue","5. End Kappa"};
-
-    int currentlyDisplayingText = 0;
-    private bool isSentenceComplete;
+    private bool _isSentenceComplete;
+    private string _currentText = String.Empty;
 
     void Awake()
     {
-        StartCoroutine( AnimateText( goatText[currentlyDisplayingText] ) );
+        _textBox = GetComponent<TextMeshProUGUI>();
     }
-    //This is a function for a button you press to skip to the next text
+
+    private void OnEnable()
+    {
+        _playerControls = new PlayerControls();
+        _playerControls.UI.SetCallbacks(this);
+        _playerControls.UI.Enable();
+
+        textCueChannel.NextCue += ShowText;
+    }
+
+    private void OnDisable()
+    {
+        _playerControls?.Dispose();
+        _playerControls = null;
+
+        textCueChannel.NextCue -= ShowText;
+    }
+
+    private void ShowText(string text)
+    {
+        _currentText = text;
+        StartCoroutine(AnimateText(text));
+    }
+
     public void SkipToNextText()
     {
-
         StopAllCoroutines();
 
-        if ( isSentenceComplete == false ) {
-            textBox.text = goatText[currentlyDisplayingText];
-            isSentenceComplete = true;
+        if (!_isSentenceComplete)
+        {
+            _textBox.maxVisibleCharacters = _currentText.Length;
+            _isSentenceComplete = true;
             return;
-        } else {
-            currentlyDisplayingText++;
         }
-        //If we've reached the end of the array, do anything you want. I just restart the example text
-        if ( currentlyDisplayingText >= goatText.Length ) {
-            currentlyDisplayingText = 0;
-        }
-        StartCoroutine( AnimateText( goatText[currentlyDisplayingText] ) );
+    
+        _textBox.SetText(String.Empty);
+        textCueChannel.EmitCueCompleted();
     }
-    //Note that the speed you want the typewriter effect to be going at is the yield waitforseconds (in my case it's 1 letter for every      0.03 seconds, replace this with a public float if you want to experiment with speed in from the editor)
+
     IEnumerator AnimateText(string displayText)
     {
-        isSentenceComplete = false;
+        _isSentenceComplete = false;
+        _textBox.SetText(displayText);
 
-        for ( int i = 0 ; i <= ( displayText.Length ) ; i++ ) {
-            textBox.text = displayText.Substring( 0 , i );
-            yield return new WaitForSeconds( textWaitTime );
+        for (int i = 0; i <= (displayText.Length); i++)
+        {
+            _textBox.maxVisibleCharacters = i;
+            yield return new WaitForSeconds(textWaitTime);
         }
 
-        isSentenceComplete = true;
+        _isSentenceComplete = true;
+    }
+    
+    public void OnAdvance(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            SkipToNextText();
     }
 }

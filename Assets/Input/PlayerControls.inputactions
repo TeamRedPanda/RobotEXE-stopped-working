@@ -134,6 +134,44 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "4021370e-a453-4432-9b5a-4ce89cf06311",
+            "actions": [
+                {
+                    "name": "Advance",
+                    "type": "Button",
+                    "id": "3ce3211e-932f-4cf2-83a5-9c2124838443",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "988c09bb-0acf-4e0c-aff2-e6cd805038b1",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Advance",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9356236-7fb8-4f5b-80a4-0ea0e9c22904",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Advance",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

@@ -147,6 +147,44 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""4021370e-a453-4432-9b5a-4ce89cf06311"",
+            ""actions"": [
+                {
+                    ""name"": ""Advance"",
+                    ""type"": ""Button"",
+                    ""id"": ""3ce3211e-932f-4cf2-83a5-9c2124838443"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""988c09bb-0acf-4e0c-aff2-e6cd805038b1"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Advance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d9356236-7fb8-4f5b-80a4-0ea0e9c22904"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Advance"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -155,6 +193,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Walk = m_Movement.FindAction("Walk", throwIfNotFound: true);
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_Advance = m_UI.FindAction("Advance", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -241,9 +282,46 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private IUIActions m_UIActionsCallbackInterface;
+    private readonly InputAction m_UI_Advance;
+    public struct UIActions
+    {
+        private @PlayerControls m_Wrapper;
+        public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Advance => m_Wrapper.m_UI_Advance;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void SetCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterface != null)
+            {
+                @Advance.started -= m_Wrapper.m_UIActionsCallbackInterface.OnAdvance;
+                @Advance.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnAdvance;
+                @Advance.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnAdvance;
+            }
+            m_Wrapper.m_UIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Advance.started += instance.OnAdvance;
+                @Advance.performed += instance.OnAdvance;
+                @Advance.canceled += instance.OnAdvance;
+            }
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface IMovementActions
     {
         void OnWalk(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnAdvance(InputAction.CallbackContext context);
     }
 }

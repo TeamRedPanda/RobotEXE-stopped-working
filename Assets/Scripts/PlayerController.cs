@@ -60,6 +60,14 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
         HandleJump();
     }
 
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Damage"))
+        {
+            Debug.Log("Ded");
+        }
+    }
+
     private void UpdateSpeed(float speed)
     {
         _speed = (speed - 0.5f) * _speedMultiplier;
