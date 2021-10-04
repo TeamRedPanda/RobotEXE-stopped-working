@@ -73,6 +73,9 @@ public class PlayerController : MonoBehaviour, PlayerControls.IMovementActions
         if (other.gameObject.CompareTag("Damage"))
         {
             Debug.Log("Ded");
+        } else if (other.gameObject.CompareTag("Goal"))
+        {
+            Debug.Log("Win");
         }
     }
 
